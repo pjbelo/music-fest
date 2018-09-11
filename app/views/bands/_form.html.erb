@@ -1,0 +1,46 @@
+<%= form_with(model: band, local: true) do |form| %>
+  <% if band.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(band.errors.count, "error") %> prohibited this band from being saved:</h2>
+
+      <ul>
+      <% band.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :band_name, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label 'Image' %><br>
+    <% if @band.imagePath? %>
+      <%= image_tag(@band.imagePath.url(:standard), alt: 'Image') %>
+      <p><%= form.check_box :remove_imagePath, {checked: false}, true, false %>Delete image</p>
+    <% else %>
+      <%= form.file_field :imagePath, class: "form-control-file" %>
+      <small class="form-text text-muted">Recomended size: 600 x 400 pixels.</small>
+    <% end %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :band_description, rows: 7, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :artistic_director %>
+    <%= form.text_field :artistic_director, id: :band_artistic_director, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-success mt-3 mb-3' %>
+  </div>
+<% end %>
+
+
+

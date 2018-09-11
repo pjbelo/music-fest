@@ -1,0 +1,34 @@
+
+<h1>Music Festival</h1>
+
+<% provide(:title, "Log in") %>
+
+
+<div class="text-center">
+  <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+
+  <div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2 col-10 offset-1">
+    <div class="">
+      <%= form_for(:session, url: login_path, class: "form-signin") do |f| %>
+
+        <%= f.label :email, class: 'sr-only' %>
+        <%= f.email_field :email, class: 'form-control mb-4', placeholder: "Email address", autofocus: true %>
+
+        <%= f.label :password, class: 'sr-only' %>
+        <%= f.password_field :password, class: 'form-control mb-4', placeholder: "Password" %>
+
+        <%= f.submit "Log in", class: "btn btn-primary mb-4" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2 col-10 offset-1">
+
+        <p>Please log in using:</p>
+        <p>Email address: admin@mail.com</p>
+        <p>Password: secret</p>
+        <br>
+        <p>Please notice that database is reset daily.</p>
+  </div>
+
+</div>

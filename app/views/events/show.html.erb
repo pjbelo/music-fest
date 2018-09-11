@@ -1,0 +1,81 @@
+<% if logged_in? %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Event date and time:</strong>
+  <%= @event.event_date.to_s(:db) %>
+</p>
+
+<p>
+  <strong>Event duration:</strong>
+  <%= @event.event_duration.to_s(:time) %>
+</p>
+
+<hr/>
+
+<p>
+  <strong>
+  Band: <%= @event.band.name %>
+  </strong>
+</p>
+
+<p>
+  <%= image_tag(@event.band.imagePath.url(:thumbnail), alt: 'Image') if @event.band.imagePath? %>
+</p>
+
+<p>
+  <%= simple_format(@event.band.description) %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @event.type.name %>
+</p>
+
+<hr/>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @event.venue.name %>
+</p>
+
+<p>
+  <%= sanitize @event.venue.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @event.venue.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @event.city.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @event.venue.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @event.venue.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary" %> |
+<%= link_to 'Back', events_path, class: "btn btn-primary" %>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+

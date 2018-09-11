@@ -1,0 +1,34 @@
+<% if logged_in? %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @band.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+</p>
+  
+<% if @band.imagePath? %>
+  <p><%= image_tag(@band.imagePath.url(:standard), alt: 'Image') %></p>
+<% else %>
+  <p>No image</p>
+<% end %>
+
+<p>
+  <strong>Description:</strong>
+  <%= simple_format(@band.description) %>
+</p>
+
+<p>
+  <strong>Artistic director:</strong>
+  <%= @band.artistic_director %>
+</p>
+
+<%= link_to 'Edit', edit_band_path(@band), class: 'btn btn-primary' %> |
+<%= link_to 'Back', bands_path, class: 'btn btn-primary' %>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+

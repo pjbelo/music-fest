@@ -1,0 +1,18 @@
+# Rename this file to local_env.rb
+
+# Add account settings and API keys here.
+
+#### This file should be listed in .gitignore to keep your settings SECRET!
+
+# This file is called in config/environment.rb
+# Each entry gets set as a local environment variable.
+# This file overrides ENV variables in the Unix shell.
+# For example, setting:
+# ENV['GMAIL_USERNAME'] = 'Your_Gmail_Username'
+# makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
+
+# Copy your Environment variable from your account
+# https://cloudinary.com/console
+ENV['CLOUDINARY_URL'] = 'REPLACE-HERE'
+
+

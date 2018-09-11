@@ -1,0 +1,47 @@
+<%= form_with(model: venue, local: true) do |form| %>
+  <% if venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+      <ul>
+      <% venue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :venue_name, class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :venue_description, rows: 7, class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :address %>
+    <%= form.text_area :address, id: :venue_address, class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, id: :venue_latitude, class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, id: :venue_longitude, class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :city_id %>
+    <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true, class: "form-control"  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-success mt-3 mb-3" %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<% if logged_in? %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @city.name %>
+</p>
+
+<%= link_to 'Edit', edit_city_path(@city), class: 'btn btn-primary' %> |
+<%= link_to 'Back', cities_path, class: 'btn btn-primary' %>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+

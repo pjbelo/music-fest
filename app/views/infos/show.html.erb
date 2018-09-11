@@ -1,0 +1,19 @@
+<% if logged_in? %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @info.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= sanitize @info.text.html_safe if @info.text %>
+</p>
+
+<%= link_to 'Edit', edit_info_path(@info), class: 'btn btn-primary' %> |
+<%= link_to 'Back', infos_path, class: 'btn btn-primary' %>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+

@@ -1,0 +1,39 @@
+<% if logged_in? %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @venue.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= simple_format(@venue.description)%>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @venue.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @venue.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @venue.longitude %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @venue.city_name %>
+</p>
+
+<%= link_to 'Edit', edit_venue_path(@venue), class: 'btn btn-primary' %> |
+<%= link_to 'Back', venues_path, class: 'btn btn-primary' %>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+

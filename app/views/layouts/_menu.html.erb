@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
+        <%= link_to home_url, class: "navbar-brand" do %> <strong>Music Fest</strong> <% end %>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <%= link_to "Events", events_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Bands", bands_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Venues", venues_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Cities", cities_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Types", types_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Info", infos_path, class: "nav-link" %>
+            </li>
+            <% if logged_in? %>
+                <li class="nav-item">
+                    <%= link_to "Users", users_path, class: "nav-link" %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</nav>

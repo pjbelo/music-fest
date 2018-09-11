@@ -1,0 +1,38 @@
+<% if logged_in? %>
+
+<h1>Cities</h1>
+
+<div class="col-md-6 offset-md-3">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cities.each do |city| %>
+        <tr>
+          <td><%= city.name %></td>
+          <td><%= link_to 'Show', city, class: "btn btn-outline-primary btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_city_path(city), class: "btn btn-outline-primary btn-sm" %></td>
+          <% if city.has_no_restrict_dependent? %>
+            <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+          <% else %>
+            <td><%= link_to 'Destroy', city, class: "btn btn-outline-danger btn-sm disabled" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New City', new_city_path, class: "btn btn-primary" %>
+</div>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+

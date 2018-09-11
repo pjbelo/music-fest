@@ -1,0 +1,7 @@
+branding: false
+toolbar:
+  - undo redo | bold italic underline | align | code link
+plugins:
+  - link
+  - paste
+  - code

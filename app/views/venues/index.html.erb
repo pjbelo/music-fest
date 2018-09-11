@@ -1,0 +1,44 @@
+<% if logged_in? %>
+
+<h1>Venues</h1>
+
+<div class="col-md-10 offset-md-1">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>City</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @venues.each do |venue| %>
+        <tr>
+          <td><%= venue.name %></td>
+          <td><%= sanitize(venue.description).truncate(120).html_safe if venue.description%></td>
+          <td><%= venue.address %></td>
+          <td><%= venue.city_name %></td>
+          <td><%= link_to 'Show', venue, class: "btn btn-outline-primary btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_venue_path(venue), class: "btn btn-outline-primary btn-sm" %></td>
+          <% if venue.has_no_restrict_dependent? %>
+          <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+        <% else %>
+          <td><%= link_to 'Destroy', venue, class: "btn btn-outline-danger btn-sm disabled" %></td>
+        <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <br>
+  <%= link_to 'New Venue', new_venue_path, class: "btn btn-primary" %>
+</div>
+
+<% else %>
+  <% controller.redirect_to '/' %>
+<% end %>
+
