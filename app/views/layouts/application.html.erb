@@ -10,7 +10,7 @@
     <%= yield(:head_tags) %>
   </head>
 
-  <body <%= yield(:body_attributes) %> >
+  <body class="<%= controller_name %> <%= action_name %>" <%= yield(:body_attributes) %> >
     <%= render 'layouts/header' %>
     <div class="container-fluid">
 

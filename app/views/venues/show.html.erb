@@ -25,6 +25,16 @@
   <%= @venue.longitude %>
 </p>
 
+<%= Rails.application.credentials.google_maps_api_key %>
+
+<% if false %>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?
+zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C#{@venue.latitude},#{@venue.longitude}
+&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Mapa" %>
+<% end %>
+
+<div id="gmap1" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
+
 <p>
   <strong>City:</strong>
   <%= @venue.city_name %>
@@ -36,4 +46,8 @@
 <% else %>
   <% controller.redirect_to '/' %>
 <% end %>
+
+    
+<script src="https://maps.googleapis.com/maps/api/js
+?key=<%= Rails.application.credentials.google_maps_api_key %>"></script>
 
