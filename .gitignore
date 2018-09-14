@@ -26,3 +26,6 @@
 # secrets !!
 /config/local_env.rb
 /config/cloudinary.yml
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
