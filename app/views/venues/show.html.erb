@@ -1,3 +1,13 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%=@venue.latitude%>, <%=@venue.longitude%>)
+    });
+  </script>
+<% end %>
+
+
 <% if logged_in? %>
 
 <p>
@@ -16,6 +26,11 @@
 </p>
 
 <p>
+  <strong>City:</strong>
+  <%= @venue.city_name %>
+</p>
+
+<p>
   <strong>Latitude:</strong>
   <%= @venue.latitude %>
 </p>
@@ -25,29 +40,15 @@
   <%= @venue.longitude %>
 </p>
 
-<%= Rails.application.credentials.google_maps_api_key %>
+<div id="map"></div>
 
-<% if false %>
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?
-zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C#{@venue.latitude},#{@venue.longitude}
-&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Mapa" %>
-<% end %>
-
-<div id="gmap1" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
-
-<p>
-  <strong>City:</strong>
-  <%= @venue.city_name %>
-</p>
-
-<%= link_to 'Edit', edit_venue_path(@venue), class: 'btn btn-primary' %> |
-<%= link_to 'Back', venues_path, class: 'btn btn-primary' %>
+<%= link_to 'Edit', edit_venue_path(@venue), class: 'btn btn-primary mt-3 mr-3' %>
+<%= link_to 'Back', venues_path, class: 'btn btn-primary mt-3' %>
 
 <% else %>
   <% controller.redirect_to '/' %>
 <% end %>
 
     
-<script src="https://maps.googleapis.com/maps/api/js
-?key=<%= Rails.application.credentials.google_maps_api_key %>"></script>
+
 

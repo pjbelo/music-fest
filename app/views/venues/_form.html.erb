@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", initMap2);
+  </script>
+<% end %>
+
+
 <%= form_with(model: venue, local: true) do |form| %>
   <% if venue.errors.any? %>
     <div id="error_explanation">
@@ -27,6 +35,11 @@
   </div>
 
   <div class="field form-group">
+    <%= form.label :city_id %>
+    <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true, class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
     <%= form.label :latitude %>
     <%= form.text_field :latitude, id: :venue_latitude, class: "form-control"  %>
   </div>
@@ -36,10 +49,9 @@
     <%= form.text_field :longitude, id: :venue_longitude, class: "form-control"  %>
   </div>
 
-  <div class="field form-group">
-    <%= form.label :city_id %>
-    <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true, class: "form-control"  %>
-  </div>
+  <p>
+  <div id="map2"></div>
+  </p>
 
   <div class="actions">
     <%= form.submit class: "btn btn-success mt-3 mb-3" %>
