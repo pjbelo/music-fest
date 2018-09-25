@@ -1,3 +1,13 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%=@event.venue.latitude%>, <%=@event.venue.longitude%>)
+    });
+  </script>
+<% end %>
+
+
 <% if logged_in? %>
 
 <p>
@@ -72,7 +82,9 @@
   <%= @event.venue.longitude %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary" %> |
+<div id="map" class="mb-3"></div>
+
+<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary mr-3" %>
 <%= link_to 'Back', events_path, class: "btn btn-primary" %>
 
 <% else %>
