@@ -16,3 +16,8 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
+
+
+beta_settings:
+  cloud_sql_instances: 'music-fest-web:europe-west2:music-fest'
+

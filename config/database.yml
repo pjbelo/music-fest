@@ -21,15 +21,26 @@ test:
   database: db/test.sqlite3
 
 
+# Configuration to use with Heroku
+#production:
+#  <<: *default
+#  database: tempart_production
+#  username: tempart
+#  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+#  adapter: postgresql
+#  encoding: unicode
+#  # For details on connection pooling, see Rails configuration guide
+#  # http://guides.rubyonrails.org/configuring.html#database-pooling
+#  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+# Configuration to use with Google Cloud SQL
 production:
-  <<: *default
-  database: tempart_production
-  username: tempart
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
+  timeout: 5000
+  username: "postgres"
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  database: "music-fest-db"
+  host:   "/cloudsql/music-fest-web:europe-west2:music-fest"
 
