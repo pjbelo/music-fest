@@ -40,7 +40,7 @@ production:
   pool: 5
   timeout: 5000
   username: "postgres"
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  password: <%= Rails.application.credentials.postgres_password %>
   database: "music-fest-db"
   host:   "/cloudsql/music-fest-web:europe-west2:music-fest"
 
