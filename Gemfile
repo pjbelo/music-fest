@@ -65,3 +65,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg'
 end
+
+# The appengine gem is a set of classes, plugins, and tools for integration with Google App Engine.
+gem "appengine", "~> 0.4.6"
