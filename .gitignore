@@ -24,6 +24,7 @@
 
 
 # secrets !!
+/secret/*
 /config/local_env.rb
 /config/cloudinary.yml
 
