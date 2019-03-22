@@ -5,6 +5,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all.sort_by(&:event_date)
+    respond_to do |format|
+      format.html
+      format.json
+      format.xml { render xml: @events.as_json(include: [:band, :venue]).to_xml(root: 'events', skip_types: true) }
+    end
   end
 
   # GET /events/1
